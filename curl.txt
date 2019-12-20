@@ -1,0 +1,4 @@
+このcurlコマンドで最初のapi(登録api)は呼べた
+
+➜  ~ curl -X POST -H "Content-Type: application/json" -d '{"sign_up_user_params": {"name": "名前を入れてね","bio": "自己紹介を入れてね" }}' https://teachapi.herokuapp.com/sign_up
+{"id":6,"name":"名前を入れてね","bio":"自己紹介を入れてね","token":"fyLXIrr3j3Q2RU8kdSxDTwtt","created_at":"2019-12-20T17:10:50.658Z","updated_at":"2019-12-20T17:10:50.658Z"}%                                                                 ➜  ~ 
