@@ -12,3 +12,10 @@ curl \
   -H "Authorization: THchfIR3osxYcOOPXbzaJAtt" \
   -d '{{"post_params": {"text": "テキストを入れてね"}}' \
   https://teachapi.herokuapp.com/posts
+
+# タイムライン取得 API
+curl \
+  -X GET \
+  -H "Content-Type:application/json" \
+  -H 'Authorization: Bearer l4hKn0Wcp5sNBgQc9MZL7Qtt' \
+  https://teachapi.herokuapp.com/posts
