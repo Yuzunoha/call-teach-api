@@ -1,4 +1,14 @@
-# 登録
-curl -X POST -H "Content-Type: application/json" \
+# ユーザー登録 API
+curl \
+  -X POST \
+  -H "Content-Type: application/json" \
   -d '{"sign_up_user_params": {"name": "名前を入れてね","bio": "自己紹介を入れてね" }}' \
   https://teachapi.herokuapp.com/sign_up
+
+# タイムライン作成 API
+curl \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: THchfIR3osxYcOOPXbzaJAtt" \
+  -d '{{"post_params": {"text": "テキストを入れてね"}}' \
+  https://teachapi.herokuapp.com/posts
