@@ -1,0 +1,4 @@
+# 登録
+curl -X POST -H "Content-Type: application/json" \
+  -d '{"sign_up_user_params": {"name": "名前を入れてね","bio": "自己紹介を入れてね" }}' \
+  https://teachapi.herokuapp.com/sign_up
