@@ -1,7 +1,9 @@
 'use strict';
 
-/** テーブル */
 const tbody = document.getElementById('tbody');
+const urlGet = 'https://teachapi.glitch.me/api/v1/get';
+const urlPost = 'https://teachapi.glitch.me/api/v1/post';
+const urlSignUp = 'https://teachapi.glitch.me/api/v1/sign_up';
 
 const createRow = (
   textId,
@@ -30,7 +32,8 @@ const createRow = (
 };
 
 const updateTable = () => {
-  const rawStr = createRow(
+  // debug
+  const rowStr = createRow(
     1234,
     'jsから書いた文章',
     '2019/12/25',
@@ -39,31 +42,7 @@ const updateTable = () => {
     'JS太郎です',
     '2019/12/23'
   );
-  tbody.innerHTML = rawStr;
-};
-
-// GETリクエストのJSONを返却する
-const apiGetPromise = () => {
-  if (localStorage.token) {
-    /* tokenがある */
-    return new Promise(resolve => {
-      fetch('https://teachapi.herokuapp.com/posts', {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer: ' + localStorage.token
-        }
-      })
-        .then(response => {
-          return response.json();
-        })
-        .then(json => {
-          alert(json);
-        });
-    });
-  } else {
-    /* tokenがない */
-    return null;
-  }
+  tbody.innerHTML = rowStr;
 };
 
 const signup = () => {
@@ -71,9 +50,21 @@ const signup = () => {
 };
 
 const post = () => {
+  // debug
   localStorage.token = 'l4hKn0Wcp5sNBgQc9MZL7Qtt';
-  alert('post');
-  apiGetPromise();
+  fetch(urlGet, {
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.token
+    }
+  })
+    .then(response => {
+      return response.json();
+    })
+    .then(json => {
+      console.log(JSON.parse(json));
+    });
 };
 
 updateTable();
