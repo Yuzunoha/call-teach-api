@@ -31,20 +31,6 @@ const createRow = (
   return s;
 };
 
-const updateTable = () => {
-  // debug
-  const rowStr = createRow(
-    1234,
-    'jsから書いた文章',
-    '2019/12/25',
-    4321,
-    'JS太郎',
-    'JS太郎です',
-    '2019/12/23'
-  );
-  tbody.innerHTML = rowStr;
-};
-
 const signup = () => {
   alert('signup');
 };
