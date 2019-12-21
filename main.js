@@ -21,9 +21,9 @@ const createRow = (
   s += '<td><div class="css-fukidashi">';
   s += '<p class="user-name">' + userName + '</p>';
   s += '<p class="fukidashi">';
-  s += 'id: ' + userId + '<br>';
-  s += 'bio: ' + userBio + '<br>';
-  s += 'updated_at: ' + userUpdatedAt;
+  s += 'id:' + userId + '<br>';
+  s += userUpdatedAt + '<br>';
+  s += userBio;
   s += '</p>';
   s += '</div></td>';
   s += '<td>' + textUpdatedAt + '</td>';
@@ -65,13 +65,31 @@ const get = () => {
   });
 };
 
+const dateFormat = source => {
+  return new Date(source).toLocaleString({ timeZone: 'Asia/Tokyo' });
+};
+
 const update = () => {
   // debug
   localStorage.token = 'l4hKn0Wcp5sNBgQc9MZL7Qtt';
 
   if (localStorage.token) {
     get().then(json => {
-      console.log(json);
+      const obj = JSON.parse(json);
+      const len = obj.length;
+      for (let i = len - 1; 0 <= i; i--) {
+        const o = obj[i];
+        const row = createRow(
+          o.id,
+          o.text,
+          dateFormat(o.updated_at),
+          o.user.id,
+          o.user.name,
+          o.user.bio,
+          dateFormat(o.user.updated_at)
+        );
+        tbody.innerHTML += row;
+      }
     });
   } else {
     /* DO NOTHING */
