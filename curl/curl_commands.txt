@@ -10,7 +10,7 @@ curl \
   -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer l4hKn0Wcp5sNBgQc9MZL7Qtt" \
-  -d '{"post_params": {"text": "カッコの数の不整合だった"}}' \
+  -d '{"post_params": {"text": "テキストを入れてね!!!"}}' \
   https://teachapi.herokuapp.com/posts
 
 # タイムライン取得 API
