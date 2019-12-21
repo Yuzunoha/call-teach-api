@@ -96,6 +96,7 @@ const signup = () => {
     .then(json => {
       const obj = JSON.parse(json);
       localStorage.token = obj.token;
+      update();
       alert(`sign up => ${name.value} : ${bio.value}`);
     });
 };
