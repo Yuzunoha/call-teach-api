@@ -50,21 +50,32 @@ const signup = () => {
 };
 
 const post = () => {
-  // debug
-  localStorage.token = 'l4hKn0Wcp5sNBgQc9MZL7Qtt';
-  fetch(urlGet, {
+  alert('post');
+};
+
+const get = () => {
+  return fetch(urlGet, {
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + localStorage.token
     }
-  })
-    .then(response => {
-      return response.json();
-    })
-    .then(json => {
-      console.log(JSON.parse(json));
-    });
+  }).then(response => {
+    return response.json();
+  });
 };
 
-updateTable();
+const update = () => {
+  // debug
+  localStorage.token = 'l4hKn0Wcp5sNBgQc9MZL7Qtt';
+
+  if (localStorage.token) {
+    get().then(json => {
+      console.log(json);
+    });
+  } else {
+    /* DO NOTHING */
+  }
+};
+
+update();
