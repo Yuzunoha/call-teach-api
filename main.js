@@ -10,7 +10,7 @@ const createRow = (
   s += '<td>' + textId + '</td>';
   s += '<td>' + text + '</td>';
   s += '<td><div class="css-fukidashi">';
-  s += '<p class="text">' + userName + '</p>';
+  s += '<p class="user-name">' + userName + '</p>';
   s += '<p class="fukidashi">';
   s += 'id: ' + userId + '<br>';
   s += 'bio: ' + userBio + '<br>';

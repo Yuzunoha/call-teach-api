@@ -21,6 +21,6 @@
       pointer-events: none;
     }
 
-    .text:hover+.fukidashi {
+    .user-name:hover+.fukidashi {
       display: block;
     }
