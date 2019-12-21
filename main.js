@@ -4,7 +4,13 @@
 const tbody = document.getElementById('tbody');
 
 const createRow = (
-  textId, text, textUpdatedAt, userId, userName, userBio, userUpdatedAt
+  textId,
+  text,
+  textUpdatedAt,
+  userId,
+  userName,
+  userBio,
+  userUpdatedAt
 ) => {
   let s = '';
   s += '<tr>';
@@ -44,13 +50,15 @@ const apiGetPromise = () => {
       fetch('https://teachapi.herokuapp.com/posts', {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer: ' + localStorage.token
+          Authorization: 'Bearer: ' + localStorage.token
         }
-      }).then(response => {
-        return response.json();
-      }).then(json => {
-        alert(json);
-      });
+      })
+        .then(response => {
+          return response.json();
+        })
+        .then(json => {
+          alert(json);
+        });
     });
   } else {
     /* tokenがない */
