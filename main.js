@@ -3,10 +3,23 @@
 const tbody = document.getElementById('tbody');
 const name = document.getElementById('name');
 const bio = document.getElementById('bio');
+const text = document.getElementById('text');
 
 const urlGet = 'https://teachapi.glitch.me/api/v1/get';
 const urlPost = 'https://teachapi.glitch.me/api/v1/post';
 const urlSignUp = 'https://teachapi.glitch.me/api/v1/sign_up';
+
+const get = () => {
+  return fetch(urlGet, {
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.token
+    }
+  }).then(response => {
+    return response.json();
+  });
+};
 
 const createRow = (
   textId,
@@ -32,45 +45,6 @@ const createRow = (
   s += '<td>' + textUpdatedAt + '</td>';
   s += '</tr>';
   return s;
-};
-
-const signup = () => {
-  fetch(urlSignUp, {
-    method: 'POST',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      sign_up_user_params: {
-        name: name.value,
-        bio: bio.value
-      }
-    })
-  })
-    .then(response => {
-      return response.json();
-    })
-    .then(json => {
-      const obj = JSON.parse(json);
-      localStorage.token = obj.token;
-    });
-};
-
-const post = () => {
-  alert('post');
-};
-
-const get = () => {
-  return fetch(urlGet, {
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + localStorage.token
-    }
-  }).then(response => {
-    return response.json();
-  });
 };
 
 const dateFormat = source => {
@@ -102,6 +76,51 @@ const update = () => {
   } else {
     /* DO NOTHING */
   }
+};
+
+const signup = () => {
+  fetch(urlSignUp, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      sign_up_user_params: {
+        name: name.value,
+        bio: bio.value
+      }
+    })
+  })
+    .then(response => {
+      return response.json();
+    })
+    .then(json => {
+      const obj = JSON.parse(json);
+      localStorage.token = obj.token;
+    });
+};
+
+const post = () => {
+  fetch(urlPost, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: localStorage.token
+    },
+    body: JSON.stringify({
+      post_params: {
+        text: text.value
+      }
+    })
+  })
+    .then(response => {
+      return response.json();
+    })
+    .then(json => {
+      update();
+    });
 };
 
 update();
