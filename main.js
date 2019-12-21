@@ -1,6 +1,9 @@
 'use strict';
 
 const tbody = document.getElementById('tbody');
+const name = document.getElementById('name');
+const bio = document.getElementById('bio');
+
 const urlGet = 'https://teachapi.glitch.me/api/v1/get';
 const urlPost = 'https://teachapi.glitch.me/api/v1/post';
 const urlSignUp = 'https://teachapi.glitch.me/api/v1/sign_up';
@@ -32,7 +35,26 @@ const createRow = (
 };
 
 const signup = () => {
-  alert('signup');
+  fetch(urlSignUp, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      sign_up_user_params: {
+        name: name.value,
+        bio: bio.value
+      }
+    })
+  })
+    .then(response => {
+      return response.json();
+    })
+    .then(json => {
+      console.log(JSON.parse(json));
+    });
+  alert('signup: ' + name.value + ' => ' + bio.value);
 };
 
 const post = () => {
