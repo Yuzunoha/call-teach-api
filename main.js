@@ -52,13 +52,11 @@ const dateFormat = source => {
 };
 
 const update = () => {
-  // debug
-  localStorage.token = 'l4hKn0Wcp5sNBgQc9MZL7Qtt';
-
   if (localStorage.token) {
     get().then(json => {
       const obj = JSON.parse(json);
       const len = obj.length;
+      tbody.innerHTML = '';
       for (let i = len - 1; 0 <= i; i--) {
         const o = obj[i];
         const row = createRow(
@@ -98,6 +96,7 @@ const signup = () => {
     .then(json => {
       const obj = JSON.parse(json);
       localStorage.token = obj.token;
+      alert(`sign up => ${name.value} : ${bio.value}`);
     });
 };
 
@@ -107,20 +106,16 @@ const post = () => {
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: localStorage.token
+      Authorization: 'Bearer ' + localStorage.token
     },
     body: JSON.stringify({
       post_params: {
         text: text.value
       }
     })
-  })
-    .then(response => {
-      return response.json();
-    })
-    .then(json => {
-      update();
-    });
+  }).then(response => {
+    update();
+  });
 };
 
 update();
