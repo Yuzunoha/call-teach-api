@@ -52,9 +52,9 @@ const signup = () => {
       return response.json();
     })
     .then(json => {
-      console.log(JSON.parse(json));
+      const obj = JSON.parse(json);
+      localStorage.token = obj.token;
     });
-  alert('signup: ' + name.value + ' => ' + bio.value);
 };
 
 const post = () => {
