@@ -1,5 +1,6 @@
 'use strict';
 
+/** テーブル */
 const tbody = document.getElementById('tbody');
 
 const createRow = (
@@ -20,9 +21,9 @@ const createRow = (
   s += '<td>' + textUpdatedAt + '</td>';
   s += '</tr>';
   return s;
-}
+};
 
-const update = () => {
+const updateTable = () => {
   const rawStr = createRow(
     1234,
     'jsから書いた文章',
@@ -33,6 +34,19 @@ const update = () => {
     '2019/12/23'
   );
   tbody.innerHTML = rawStr;
+};
+
+// GETリクエストのJSONを返却する
+const apiGetPromise = () => {
+  if (localStorage.token) {
+    /* tokenがある */
+    return new Promise(resolve => {
+      fetch();
+    });
+  } else {
+    /* tokenがない */
+    return null;
+  }
 };
 
 const signup = () => {
