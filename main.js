@@ -41,7 +41,16 @@ const apiGetPromise = () => {
   if (localStorage.token) {
     /* tokenがある */
     return new Promise(resolve => {
-      fetch();
+      fetch('https://teachapi.herokuapp.com/posts', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer: ' + localStorage.token
+        }
+      }).then(response => {
+        return response.json();
+      }).then(json => {
+        alert(json);
+      });
     });
   } else {
     /* tokenがない */
@@ -54,7 +63,9 @@ const signup = () => {
 };
 
 const post = () => {
+  localStorage.token = 'l4hKn0Wcp5sNBgQc9MZL7Qtt';
   alert('post');
+  apiGetPromise();
 };
 
-update();
+updateTable();
