@@ -35,4 +35,12 @@ const update = () => {
   tbody.innerHTML = rawStr;
 };
 
+const signup = () => {
+  alert('signup');
+};
+
+const post = () => {
+  alert('post');
+};
+
 update();
