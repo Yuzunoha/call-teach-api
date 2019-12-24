@@ -25,17 +25,6 @@ const sendData = (url, data = {}, queryParam = {}, _method = 'GET') => {
   }).then(response => response.json());
 }
 
-// バーチーさんのslackより
-const data = {
-  "sign_up_user_params": {
-    "name": "名前を入れてね",
-    "bio": "自己紹介を入れてね",
-    "email": "email",
-    "password": "password",
-    "password_confirmation": "password"
-  }
-};
-
 /**
  * 登録ボタン押下時の処理
  */
@@ -56,5 +45,4 @@ const onButtonClickSignUp = () => {
   sendData(urlSignUp, data).then(result => {
     console.log(result);
   });
-
 }
