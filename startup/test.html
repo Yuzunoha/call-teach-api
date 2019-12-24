@@ -1,0 +1,12 @@
+<script>
+  const url = "abc.com"
+  const queryParam = {};
+
+  let urlWithQueryParam = url;
+  if (Object.keys(queryParam).length) {
+    const qs = new URLSearchParams(queryParam);
+    urlWithQueryParam = `${url}?${qs}`;
+  }
+
+  console.log(urlWithQueryParam)
+</script>
